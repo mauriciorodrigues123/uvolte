@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Uvolte - Crie sua conta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <style>
+        /* Reset e configurações base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Public Sans', sans-serif;
+            min-height: max(884px, 100vh);
+            background-color: #ffffff;
+            color: #131118;
+            line-height: 1.5;
+        }
+
+        /* Container principal */
+        .container-principal {
+            position: relative;
+            display: flex;
+            height: auto;
+            min-height: 100vh;
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff;
+            overflow-x: hidden;
+            padding: 1rem;
+        }
+
+        /* Container do formulário */
+        .container-formulario {
+            width: 100%;
+            max-width: 28rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Cabeçalho */
+        .cabecalho-formulario {
+            text-align: center;
+        }
+
+        .titulo-principal {
+            color: #131118;
+            letter-spacing: -0.025em;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.25;
+        }
+
+        .subtitulo-formulario {
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            color: #4B5563;
+        }
+
+        /* Grupo de campos */
+        .grupo-campos {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Campo de formulário */
+        .campo-formulario {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .rotulo-campo {
+            color: #131118;
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.5;
+            padding-bottom: 0.5rem;
+        }
+
+        .container-input {
+            position: relative;
+            display: flex;
+            width: 100%;
+            flex: 1;
+            align-items: stretch;
+        }
+
+        .icone-input {
+            color: #9CA3AF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-left: 0;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .input-formulario {
+            flex: 1;
+            width: 100%;
+            min-width: 0;
+            resize: none;
+            overflow: hidden;
+            color: #131118;
+            background-color: #ffffff;
+            border: none;
+            border-bottom: 1px solid #E5E7EB;
+            height: 3.5rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            padding: 0 0 0 1rem;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .input-formulario:focus {
+            border-bottom-color: #7C3AED;
+        }
+
+        .input-formulario::placeholder {
+            color: #6B7280;
+        }
+
+        .botao-olho {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            padding-right: 0;
+            color: #6B7280;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .botao-olho:hover {
+            color: #7C3AED;
+        }
+
+        /* Botão de submit */
+        .container-botao-submit {
+            padding-top: 1rem;
+        }
+
+        .botao-submit {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.5rem;
+            background-color: #7C3AED;
+            height: 3.5rem;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            outline: none;
+        }
+
+        .botao-submit:hover {
+            background-color: #6D28D9;
+        }
+
+        .botao-submit:focus {
+            box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #7C3AED;
+        }
+
+        /* Link de login */
+        .container-link-login {
+            text-align: center;
+        }
+
+        .texto-link-login {
+            font-size: 0.875rem;
+            color: #4B5563;
+        }
+
+        .link-login {
+            font-weight: 600;
+            color: #7C3AED;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .link-login:hover {
+            color: #6D28D9;
+        }
+
+        /* Responsividade */
+        @media (max-width: 640px) {
+            .container-principal {
+                padding: 0.5rem;
+            }
+
+            .titulo-principal {
+                font-size: 1.75rem;
+            }
+
+            .container-formulario {
+                padding: 0 0.5rem;
+            }
+        }
+
+        /* Ajustes para inputs com ícone */
+        .input-com-icone {
+            padding-left: 2.5rem;
+        }
+
+        .icone-posicionado {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .container-input-com-icone {
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-principal">
+        <div class="container-formulario">
+            <!-- Cabeçalho -->
+            <div class="cabecalho-formulario">
+                <h1 class="titulo-principal">Crie sua conta</h1>
+                <p class="subtitulo-formulario">Junte-se à Uvolte e participe da inovação.</p>
+            </div>
+
+            <!-- Formulário -->
+            <form>
+                <div class="grupo-campos">
+                    <!-- Nome completo -->
+                    <div class="campo-formulario">
+                        <label class="rotulo-campo" for="nome-completo">Nome completo</label>
+                        <div class="container-input-com-icone">
+                            <div class="icone-posicionado icone-input">
+                                <span class="material-symbols-outlined">person</span>
+                            </div>
+                            <input class="input-formulario input-com-icone" id="nome-completo" name="nome-completo"
+                                placeholder="Insira seu nome completo" type="text" />
+                        </div>
+                    </div>
+
+                    <!-- E-mail Institucional -->
+                    <div class="campo-formulario">
+                        <label class="rotulo-campo" for="email-institutional">E-mail Institucional</label>
+                        <div class="container-input-com-icone">
+                            <div class="icone-posicionado icone-input">
+                                <span class="material-symbols-outlined">mail</span>
+                            </div>
+                            <input class="input-formulario input-com-icone" id="email-institutional"
+                                name="email-institutional" placeholder="seuemail@instituicao.com" type="email" />
+                        </div>
+                    </div>
+
+                    <!-- Telefone -->
+                    <div class="campo-formulario">
+                        <label class="rotulo-campo" for="telefone">Telefone</label>
+                        <div class="container-input-com-icone">
+                            <div class="icone-posicionado icone-input">
+                                <span class="material-symbols-outlined">phone</span>
+                            </div>
+                            <input class="input-formulario input-com-icone" id="telefone" name="telefone"
+                                placeholder="(XX) XXXXX-XXXX" type="tel" />
+                        </div>
+                    </div>
+
+                    <!-- Senha -->
+                    <div class="campo-formulario">
+                        <label class="rotulo-campo" for="senha">Senha</label>
+                        <div class="container-input-com-icone">
+                            <div class="icone-posicionado icone-input">
+                                <span class="material-symbols-outlined">lock</span>
+                            </div>
+                            <input class="input-formulario input-com-icone" id="senha" name="senha"
+                                placeholder="Crie uma senha forte" type="password" />
+                            <button class="botao-olho" type="button">
+                                <span class="material-symbols-outlined">visibility</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Confirmar Senha -->
+                    <div class="campo-formulario">
+                        <label class="rotulo-campo" for="confirmar-senha">Confirmar Senha</label>
+                        <div class="container-input-com-icone">
+                            <div class="icone-posicionado icone-input">
+                                <span class="material-symbols-outlined">lock_reset</span>
+                            </div>
+                            <input class="input-formulario input-com-icone" id="confirmar-senha" name="confirmar-senha"
+                                placeholder="Confirme sua senha" type="password" />
+                            <button class="botao-olho" type="button">
+                                <span class="material-symbols-outlined">visibility</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botão de submit -->
+
+                <a class="botao-submit" href="/tipoUsuario/tipoUsuario.html">
+                        Criar Conta
+                </a>
+
+            </form>
+
+            <!-- Link para login -->
+            <div class="container-link-login">
+                <p class="texto-link-login">
+                    Já tem uma conta?
+                    <a class="link-login" href="#">
+                        Entrar
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

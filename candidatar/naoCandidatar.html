@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Uvolte - Tela de Votação</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <style>
+        /* Reset e configurações base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            height: 100%;
+        }
+        
+        body {
+            font-family: 'Public Sans', sans-serif;
+            min-height: max(884px, 100vh);
+            background-color: #f7f6f8;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+        
+        /* Container principal */
+        .container-votacao {
+            position: relative;
+            display: flex;
+            height: auto;
+            min-height: 100vh;
+            width: 100%;
+            flex-direction: column;
+            font-family: 'Public Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Header */
+        .cabecalho-votacao {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            height: 4rem;
+            align-items: center;
+            justify-content: center;
+            background-color: #7c3bed;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .titulo-votacao {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        
+        /* Conteúdo principal */
+        .conteudo-principal {
+            flex: 1;
+            padding-bottom: 10rem;
+        }
+        
+        .intro-votacao {
+            padding: 1rem;
+        }
+        
+        .texto-intro {
+            color: #44403C;
+            font-size: 1.125rem;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+        
+        /* Lista de candidatos */
+        .lista-candidatos {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        .card-candidato {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            align-items: flex-start;
+            gap: 0.75rem;
+            border-radius: 1.25rem;
+            padding: 1rem;
+            background-color: #ffffff;
+            border: 1px solid #E5E7EB;
+            box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.1), 0 4px 8px -4px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .card-candidato:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15), 0 6px 12px -4px rgba(0, 0, 0, 0.08);
+        }
+        
+        .info-candidato {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+        }
+        
+        .container-foto {
+            position: relative;
+            height: 5rem;
+            width: 5rem;
+            flex-shrink: 0;
+        }
+        
+        .foto-candidato {
+            height: 5rem;
+            width: 5rem;
+            border-radius: 9999px;
+            object-fit: cover;
+            box-shadow: 0 0 4px rgba(173, 216, 230, 0.4), 0 0 8px rgba(173, 216, 230, 0.2);
+        }
+        
+        .dados-candidato {
+            display: flex;
+            flex-grow: 1;
+            flex-direction: column;
+        }
+        
+        .nome-candidato {
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.5;
+            color: #343A40;
+        }
+        
+        .slogan-candidato {
+            color: #44403C;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            margin-top: 0.25rem;
+        }
+        
+        /* Botão de ação */
+        .container-botao-acao {
+            position: fixed;
+            bottom: 4rem;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            background-color: #ffffff;
+            padding: 1rem;
+            box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .wrapper-botao {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        
+        .botao-acao {
+            width: 100%;
+            background-color: #ffffff;
+            color: #7c3bed;
+            font-size: 1.125rem;
+            font-weight: 600;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            border-radius: 0.375rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: solid #f8f1f1;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .botao-acao:hover {
+            background-color: #7c3bed;
+            color: #E5E7EB;
+        }
+        
+        /* Navegação inferior */
+        .navegacao-inferior {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            background-color: #f7f6f8;
+            box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .menu-navegacao {
+            display: flex;
+            height: 4rem;
+            align-items: center;
+            justify-content: space-around;
+        }
+        
+        .item-menu {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #6B7280;
+            transition: color 0.2s ease;
+        }
+        
+        .item-menu:hover {
+            color: #7c3bed;
+        }
+        
+        .item-menu.ativo {
+            color: #7c3bed;
+        }
+        
+        .icone-menu {
+            font-size: 1.5rem;
+        }
+        
+        .texto-menu {
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .texto-menu.ativo {
+            font-weight: 700;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 640px) {
+            .card-candidato {
+                padding: 0.75rem;
+            }
+            
+            .info-candidato {
+                gap: 0.75rem;
+            }
+            
+            .container-foto {
+                height: 4rem;
+                width: 4rem;
+            }
+            
+            .foto-candidato {
+                height: 4rem;
+                width: 4rem;
+            }
+            
+            .nome-candidato {
+                font-size: 1.125rem;
+            }
+            
+            .slogan-candidato {
+                font-size: 0.75rem;
+            }
+            
+            .titulo-votacao {
+                font-size: 1.125rem;
+            }
+            
+            .botao-acao {
+                font-size: 1rem;
+                padding-top: 0.875rem;
+                padding-bottom: 0.875rem;
+            }
+        }
+        
+        @media (max-width: 390px) {
+            .intro-votacao {
+                padding: 0.75rem;
+            }
+            
+            .texto-intro {
+                font-size: 1rem;
+            }
+            
+            .lista-candidatos {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+            
+            .container-botao-acao {
+                padding: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-votacao">
+        <!-- Header -->
+        <header class="cabecalho-votacao">
+            <h1 class="titulo-votacao">Eleição de Representante</h1>
+        </header>
+        
+        <!-- Conteúdo principal -->
+        <main class="conteudo-principal">
+            <!-- Introdução -->
+            <div class="intro-votacao">
+                <p class="texto-intro">Escolha seu Candidato</p>
+            </div>
+            
+            <!-- Lista de candidatos -->
+            <div class="lista-candidatos">
+                <!-- Candidato 1 - Ana Silva -->
+                <div class="card-candidato">
+                    <div class="info-candidato">
+                        <div class="container-foto">
+                            <img class="foto-candidato" data-alt="Foto de perfil de Ana Silva" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDh0n7NO90uu9W_RXoTGSs39YF94A-Jy-4PNf_w-XqunY0iXNm_3-WnT4lE2bZXBt-z2R9lY5YmXy_FnM0Y_ks-ebf-ETUFCOXihKpJsz7CtuzjuSxB9Qx55LH62QnWVdC8GU_5zeVsz0Vab3Txe2o2pcTdJY8ny9bD5drNP8yM8YlGLNNS3WhGfAdPoMBMyL7F8pj50CJE05HpFH781PefvHhPEku08ngLbcaF6pT5tVTv3wMXPtT1JDDMVtuygnh7hkx_bFLKIFo"/>
+                        </div>
+                        <div class="dados-candidato">
+                            <p class="nome-candidato">Ana Silva</p>
+                            <p class="slogan-candidato">"Voz para a comunidade, futuro para todos."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Candidato 2 - Bruno Costa -->
+                <div class="card-candidato">
+                    <div class="info-candidato">
+                        <div class="container-foto">
+                            <img class="foto-candidato" data-alt="Foto de perfil de Bruno Costa" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-gcaVyIrifNOAA4atQXruBkSXBtuwHQNmLIfn6oqY2GMGE0JX6JPVKHF1C--0p8tg3CTUvtBpV4SiKOq2AhILhDDWU6QZwIAMC6y6afFxyZfitGiiKLSXP4EF9SMn-2-AxWoO-CYlYwfbX1NrFR5PqNwflkTRTvcQqcl3ZQzAk7lvwiSTxuHa-BK2EvMNttJuxH2xl6R1cg0wIMoz_RhhI1pjE6NyHCbZOTiejp0A3THPu_Cjxk7iOjPbRzf3ZeK7K5ATjmYp0CQ"/>
+                        </div>
+                        <div class="dados-candidato">
+                            <p class="nome-candidato">Bruno Costa</p>
+                            <p class="slogan-candidato">"Trabalho duro, resultados reais."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Candidato 3 - Carla Dias -->
+                <div class="card-candidato">
+                    <div class="info-candidato">
+                        <div class="container-foto">
+                            <img class="foto-candidato" data-alt="Foto de perfil de Carla Dias" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6n09XhfFjmM4Gr2etWjiOLRVaU0yNyJDH5uG2g4XzyVqa79XKCHhCaEbyh6JhktRxY8d7c5OXpSrJELiPMa93A8NUyBUuOGk5B6iLsKDqa4j8KfLEJoS8RdWPAOWsCoOlIDsanznWOauLaSWouEfgE4hc6f_aeZOLoODK5LNfDm_IzCimVzbPKvEmi9a6QiHM-3zpGOT86-dku8J6aUTeswEoz_plnZAepoADKV0weZ-gXp92TT3oFidz_FllsFWM062-q3uWMdg"/>
+                        </div>
+                        <div class="dados-candidato">
+                            <p class="nome-candidato">Carla Dias</p>
+                            <p class="slogan-candidato">"Inovação e progresso para o nosso bairro."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Candidato 4 - Daniel Martins -->
+                <div class="card-candidato">
+                    <div class="info-candidato">
+                        <div class="container-foto">
+                            <img class="foto-candidato" data-alt="Foto de perfil de Daniel Martins" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdgmP9VfFOWY7zqHWxRUc74q3-jVtqh9FRIQyjN2XxsP52KdbGRxtfIJA1DWUIFeSa6O0iZVsnfOqVhxaiCfCIP6H1rfTayn9GEeQtFTaFn8vBjPr7fpI9vKS-9Ec4JzLpduWl2Kx-_fyoYucV6_0ehUNWTFLtPMdZXp0rvAgfU1elH_uCMVidfmlxzJQhReUtTwG2admsJLyK9-fE4KAWGXiLtGgeBQYHVOnGPsdF1KoTyheY6ZR9Pmh7q_sfyr4zdSO9IEPUffk"/>
+                        </div>
+                        <div class="dados-candidato">
+                            <p class="nome-candidato">Daniel Martins</p>
+                            <p class="slogan-candidato">"Conectando pessoas, construindo o futuro."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Botão de ação -->
+        <div class="container-botao-acao">
+            <div class="wrapper-botao">
+                <a href="/confimacaoVoto/confirmacaoVoto.html" class="botao-acao">
+                    confirmar voto  
+                </a>
+            </div>
+        </div>
+        
+        <!-- Navegação inferior -->
+        <nav class="navegacao-inferior">
+            <div class="menu-navegacao">
+                <a class="item-navegacao" href="/loginUsuario/index.html">
+                    <span class="material-symbols-outlined">home</span>
+                    <p class="texto-navegacao">Início</p>
+                </a>
+            </div>
+        </nav>
+    </div>
+</body>
+</html>

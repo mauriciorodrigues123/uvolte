@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Uvolte - Identificação</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <style>
+        /* Reset e configurações base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            height: 100%;
+        }
+        
+        body {
+            font-family: 'Public Sans', sans-serif;
+            min-height: max(884px, 100vh);
+            background-color: #ffffff;
+            color: #1F2937;
+            line-height: 1.5;
+        }
+        
+        /* Container principal */
+        .container-principal {
+            position: relative;
+            display: flex;
+            height: 100vh;
+            min-height: 100vh;
+            width: 100%;
+            flex-direction: column;
+            background-color: #ffffff;
+            font-family: 'Public Sans', sans-serif;
+        }
+        
+        /* Container de conteúdo */
+        .container-conteudo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            width: 100%;
+            max-width: 28rem;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        
+        /* Logo */
+        .container-logo {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding-bottom: 2rem;
+        }
+        
+        .logo {
+            width: 7rem;
+            height: 7rem;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            aspect-ratio: 1 / 1;
+        }
+        
+        /* Títulos e textos */
+        .titulo-principal {
+            color: #1F2937;
+            letter-spacing: -0.025em;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.25;
+            padding: 0 1rem;
+            text-align: center;
+            padding-bottom: 0.5rem;
+            padding-top: 1.5rem;
+        }
+        
+        .texto-descricao {
+            color: #6B7280;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            padding-bottom: 2rem;
+            padding-top: 0.25rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            text-align: center;
+        }
+        
+        /* Grupo de botões */
+        .grupo-botoes {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 1rem;
+            padding: 0.75rem 1rem;
+        }
+        
+        /* Botões */
+        .botao {
+            display: flex;
+            min-width: 5.25rem;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            height: 3.5rem;
+            padding: 0 1.25rem;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.5;
+            letter-spacing: 0.015em;
+            width: 100%;
+            transition: opacity 0.2s ease;
+            border: none;
+            text-decoration: none;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .botao:hover {
+            opacity: 0.9;
+        }
+        
+        .botao-aluno {
+            background-color: #7C3AED;
+            color: #ffffff;
+        }
+        
+        .botao-professor {
+            background-color: #06B6D4;
+            color: #ffffff;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 640px) {
+            .container-conteudo {
+                padding: 0.5rem;
+            }
+            
+            .titulo-principal {
+                font-size: 1.75rem;
+            }
+            
+            .logo {
+                width: 6rem;
+                height: 6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-principal">
+        <div class="container-conteudo">
+            <!-- Logo -->
+            <div class="container-logo">
+                <div class="logo" data-alt="Logotipo da Uvolte, um 'U' estilizado com um V dentro, em gradiente roxo e ciano" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBUjnJmvXaZRep87KCaqsytS3XNGQpNEBhAzuCHOTBcEqqLRFRLiEH28oRL8Dtu8qE-FTD1KGHMqrAFARRgWuqww0T2x1jkSdrnaIWDNgpF9AwUZTGERRPj92dnIR8Pmr-n7TQMmANfUKT0M7YRuITROu-Qd6VF7E3LifQv1u6Qikf_Vu78on_xv0A6VjfhluK3iKVBGjxkkwab-JCPXQTcu93zHCvSEuV28SlOtGvCv3w3QEC2iBsDhLfELdD1UmyeS33PH9lcMyk");'></div>
+            </div>
+            
+            <!-- Título -->
+            <h1 class="titulo-principal">Bem-vindo(a) ao Uvolte</h1>
+            
+            <!-- Texto de descrição -->
+            <p class="texto-descricao">Para começar, identifique-se abaixo</p>
+            
+            <!-- Grupo de botões -->
+            <div class="grupo-botoes">
+              <a href="/criacaoPerfil/criarPerfil(A).html">
+                <button class="botao botao-aluno" type="button">
+                    <span>Sou Aluno</span>
+                </button>
+              </a>
+                <a href="/criacaoPerfil/criarPerfil(P).html">
+                  <button class="botao botao-professor" type="button">
+                    <span>Sou Professor</span>
+                </button>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

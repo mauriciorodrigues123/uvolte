@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Uvolte - Dashboard Professor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <style>
+        /* Reset e configurações base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            height: 100%;
+        }
+        
+        body {
+            font-family: 'Public Sans', sans-serif;
+            min-height: max(884px, 100vh);
+            background-color: #f7f6f8;
+            color: #1F2937;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+        
+        /* Container principal */
+        .container-principal {
+            position: relative;
+            display: flex;
+            height: auto;
+            min-height: 100vh;
+            width: 100%;
+            flex-direction: column;
+            font-family: 'Public Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Header */
+        .cabecalho-principal {
+            display: flex;
+            align-items: center;
+            background-color: #7C3AED;
+            padding: 1rem;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .container-usuario {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .avatar-usuario {
+            display: flex;
+            width: 2.5rem;
+            height: 2.5rem;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .imagem-avatar {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 9999px;
+            width: 2.5rem;
+            height: 2.5rem;
+            border: 2px solid #ffffff;
+        }
+        
+        .boas-vindas {
+            color: #ffffff;
+            font-size: 1.125rem;
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: -0.015em;
+            flex: 1;
+        }
+        
+        .container-notificacao {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .botao-notificacao {
+            display: flex;
+            max-width: 30rem;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            height: 3rem;
+            background-color: transparent;
+            color: #ffffff;
+            gap: 0.5rem;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: 0.015em;
+            min-width: 0;
+            padding: 0;
+            border: none;
+        }
+        
+        .icone-notificacao {
+            color: #ffffff;
+            font-size: 1.5rem;
+        }
+        
+        /* Conteúdo principal */
+        .conteudo-principal {
+            flex-grow: 1;
+            padding-bottom: 6rem;
+        }
+        
+        .titulo-secao {
+            color: #1F2937;
+            letter-spacing: -0.025em;
+            font-size: 1.75rem;
+            font-weight: 700;
+            line-height: 1.25;
+            padding: 0 1rem;
+            text-align: left;
+            padding-bottom: 0.75rem;
+            padding-top: 1.5rem;
+        }
+        
+        /* Cards de eleições */
+        .container-eleicoes {
+            padding: 1rem;
+            padding-top: 0.5rem;
+        }
+        
+        .card-eleicao {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            background-color: #ffffff;
+            margin-bottom: 1rem;
+        }
+        
+        .imagem-eleicao {
+            width: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            aspect-ratio: 16 / 9;
+            border-top-left-radius: 0.75rem;
+            border-top-right-radius: 0.75rem;
+        }
+        
+        .conteudo-card {
+            display: flex;
+            width: 100%;
+            min-width: 18rem;
+            flex-grow: 1;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem;
+        }
+        
+        .titulo-eleicao {
+            color: #1F2937;
+            font-size: 1.125rem;
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: -0.015em;
+        }
+        
+        .info-eleicao {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            justify-content: space-between;
+        }
+        
+        .detalhes-eleicao {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .texto-info {
+            color: #6B7280;
+            font-size: 0.875rem;
+            font-weight: 400;
+            line-height: 1.25;
+        }
+        
+        .destaque-info {
+            font-weight: 700;
+            color: #7C3AED;
+        }
+        
+        .container-botoes {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .botao-acao {
+            display: flex;
+            min-width: 5.25rem;
+            max-width: 30rem;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            height: 2.5rem;
+            padding: 0 1rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            line-height: 1.25;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: none;
+            transition: opacity 0.2s ease;
+        }
+        
+        .botao-acao:hover {
+            opacity: 0.9;
+        }
+        
+        .botao-monitorar {
+            background-color: #06B6D4;
+            color: #ffffff;
+        }
+        
+        .botao-fechar {
+            background-color: #EF4444;
+            color: #ffffff;
+        }
+        
+        .icone-botao {
+            color: #ffffff;
+            font-size: 1rem;
+        }
+        
+        .texto-botao {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-left: 0.25rem;
+        }
+        
+        /* Cards de resultados */
+        .container-resultados {
+            padding: 0 1rem;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        .card-resultado {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background-color: #ffffff;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            min-height: 4.5rem;
+            padding: 1rem;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .icone-resultado {
+            color: #1F2937;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.5rem;
+            background-color: #E5E7EB;
+            flex-shrink: 0;
+            width: 3rem;
+            height: 3rem;
+        }
+        
+        .conteudo-resultado {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .titulo-resultado {
+            color: #1F2937;
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.5;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+        }
+        
+        .subtitulo-resultado {
+            color: #6B7280;
+            font-size: 0.875rem;
+            font-weight: 400;
+            line-height: 1.25;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        
+        .botao-detalhes {
+            color: #06B6D4;
+            font-size: 0.875rem;
+            font-weight: 700;
+            line-height: 1.25;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        
+        /* Botão flutuante */
+        .botao-flutuante {
+            position: fixed;
+            bottom: 6rem;
+            right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            border-radius: 9999px;
+            height: 2;
+            padding: 0 1.25rem;
+            background-color: #06B6D4;
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.25;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+            z-index: 40;
+            text-decoration: none;
+        }
+        
+        .botao-flutuante:hover {
+            opacity: 0.9;
+        }
+        
+        .icone-flutuante {
+            color: #ffffff;
+            font-size: 2rem;
+        }
+        
+        /* Navegação inferior */
+        .navegacao-inferior {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 5rem;
+            background-color: #ffffff;
+            border-top: 1px solid #E5E7EB;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 50;
+        }
+        
+        .container-navegacao {
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            gap: 5rem; 
+        }
+        
+        .item-navegacao {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+        
+        .icone-navegacao {
+            font-size: 2rem;
+        }
+        
+        .texto-navegacao {
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        
+        .item-ativo .icone-navegacao,
+        .item-ativo .texto-navegacao {
+            color: #7C3AED;
+        }
+        
+        .item-inativo .icone-navegacao {
+            color: #6B7280;
+        }
+        
+        .item-inativo .texto-navegacao {
+            color: #6B7280;
+            font-weight: 500;
+        }
+
+        #resultados-mudar{
+          position: relative;
+          right: 40px;
+        }
+        
+        /* Responsividade */
+        @media (min-width: 640px) {
+            .card-eleicao {
+                flex-direction: row;
+                align-items: flex-start;
+            }       
+            .conteudo-card {
+                padding: 1rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .cabecalho-principal {
+                padding: 0.75rem;
+            }
+            
+            .titulo-secao {
+                font-size: 1.5rem;
+                padding: 0 0.75rem;
+            }
+            
+            .container-eleicoes {
+                padding: 0.75rem;
+                padding-top: 0.25rem;
+            }
+            
+            .container-resultados {
+                padding: 0 0.75rem;
+            }
+            
+            .botao-flutuante {
+                bottom: 5rem;
+                right: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-principal">
+        <!-- Header -->
+        <header class="cabecalho-principal">
+            <div class="container-usuario">
+                <div class="avatar-usuario">
+                    <div class="imagem-avatar" data-alt="User avatar image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB0p8G5IoSaTDBpHm9G-p1QXPxU9QO_hRvDRGYEwnvT5N48A8evb5jdYNpkQ0XmTfXZKgiH10Ed9GiPb8xslasu-UAFIWqFil7zlOYPRFwtEkEj9VMqWy9kcHYxSMSO4tjxvaCVUP1zXr5YxdcveF-NEnPRa2EeSlyVHyaxAVTbLun4aEkzXjQBrW_Kx-wPlT2UaY8etLgOomTZvHGMwpW0pXIVckR1eRaGkR9yQe9w3OjLEsyQKYcZFxnLUGHH5-um5hOAYLk_4HY");'></div>
+                </div>
+                <h2 class="boas-vindas">Olá, Professor(a) Ana!</h2>
+            </div>
+            <div class="container-notificacao">
+                <button class="botao-notificacao">
+                    <span class="material-symbols-outlined icone-notificacao">notifications</span>
+                </button>
+            </div>
+        </header>
+        
+        <!-- Conteúdo principal -->
+        <main class="conteudo-principal">
+            <!-- Seção Eleições Ativas -->
+            <h1 class="titulo-secao">Eleições Ativas</h1>
+            
+            <div class="container-eleicoes">
+                <!-- Card Eleição 1 -->
+                <div class="card-eleicao">
+                    <div class="imagem-eleicao" data-alt="Purple and blue abstract gradient for the election card" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAgGsvoJBhXMqBqwR3g3t0TbbJ_MxwKqANKpqqdoSGqqt9lLPALJh_6MQPNYjjXsE3-qoOkz5UOAkYDmBrnaF6MWXdq5o8nKlRM-2rfGbhjIe-OOoEltbGgdQhqKgp-GVVgblMQD_Wm-34SvXfvB7DNKWpmo9_jgobYA5bd91nnG_T1u8Eo0ZmTDqlVXv1EZYjjUoI6i9RMheesr40K_PSB9cgV00yycDMaX8iOJvW1m3yLkif8fmqqvU9UjLxtpT-ZVVznZs2pI4Q");'></div>
+                    <div class="conteudo-card">
+                        <p class="titulo-eleicao">Representante de Sala - Turma 302</p>
+                        <div class="info-eleicao">
+                            <div class="detalhes-eleicao">
+                                <p class="texto-info">Participação: <span class="destaque-info">75%</span></p>
+                                <p class="texto-info">Encerra em: 2 dias</p>
+                            </div>
+                            <div class="container-botoes">
+                                <button class="botao-acao botao-monitorar">
+                                    <span class="material-symbols-outlined icone-botao">visibility</span>
+                                    <span class="texto-botao">Monitorar</span>
+                                </button>
+                                <button class="botao-acao botao-fechar">
+                                    <span class="material-symbols-outlined icone-botao">cancel</span>
+                                    <span class="texto-botao">Fechar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card Eleição 2 -->
+                <div class="card-eleicao">
+                    <div class="imagem-eleicao" data-alt="Blue and green abstract gradient for the election card" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDJiDS3m1squUE0c5KMU6NaC5WOn8EbdDJCa6tcz-lpSyX3Oe_IVosn2OVZAGokDlFIYgVIrQvX5IfdQbB2DH7-x-JLyRHHmRi78hUGKDksKbfrpl_6HkC8GasEsZ6tQMQlBNeXMzpBQua7WmXTasMIsr8EgaEbsHMfWetl7O6I6w4eOWpXaEKY8GzCYstc-nqxTAhGUdx6I_ov9y0EsjTnloj44_OG4p80rfMAiPSP9klA3B9qOm6UEu4j3xAlQgrO-h_JcZBoxGI");'></div>
+                    <div class="conteudo-card">
+                        <p class="titulo-eleicao">Conselho Fiscal do Grêmio Estudantil</p>
+                        <div class="info-eleicao">
+                            <div class="detalhes-eleicao">
+                                <p class="texto-info">Participação: <span class="destaque-info">40%</span></p>
+                                <p class="texto-info">Encerra em: 5 dias</p>
+                            </div>
+                            <div class="container-botoes">
+                                <button class="botao-acao botao-monitorar">
+                                    <span class="material-symbols-outlined icone-botao">visibility</span>
+                                    <span class="texto-botao">Monitorar</span>
+                                </button>
+                                <button class="botao-acao botao-fechar">
+                                    <span class="material-symbols-outlined icone-botao">cancel</span>
+                                    <span class="texto-botao">Fechar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Seção Resultados Recentes -->
+            <h1 class="titulo-secao">Resultados Recentes</h1>
+            
+            <div class="container-resultados">
+                <!-- Card Resultado 1 -->
+                <div class="card-resultado">
+                    <div class="icone-resultado">
+                        <span class="material-symbols-outlined">pie_chart</span>
+                    </div>
+                    <div class="conteudo-resultado">
+                        <p class="titulo-resultado">Presidente Grêmio Estudantil 2024</p>
+                        <p class="subtitulo-resultado">Eleito(a): Maria Silva</p>
+                    </div>
+                    <button class="botao-detalhes">Ver detalhes</button>
+                </div>
+                
+                <!-- Card Resultado 2 -->
+                <div class="card-resultado">
+                    <div class="icone-resultado">
+                        <span class="material-symbols-outlined">how_to_vote</span>
+                    </div>
+                    <div class="conteudo-resultado">
+                        <p class="titulo-resultado">Representante de Turma - 201</p>
+                        <p class="subtitulo-resultado">Eleito(a): João Pereira</p>
+                    </div>
+                    <button class="botao-detalhes">Ver detalhes</button>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Botão flutuante -->
+        <a href="/criacaoSala/criarSala.html" class="botao-flutuante">
+            <span class="material-symbols-outlined icone-flutuante">add</span>
+            <span class="truncate">Criar Nova Eleição</span>
+        </a>
+        
+        <!-- Navegação inferior -->
+        <nav class="navegacao-inferior">
+            <div class="container-navegacao">
+                <button class="item-navegacao item-ativo">
+                    <span class="material-symbols-outlined icone-navegacao">home</span>
+                    <span class="texto-navegacao">Início</span>
+                </button>
+                <button class="item-navegacao item-inativo">
+                </button>
+                <button class="item-navegacao item-inativo">
+                </button>
+                <button class="item-navegacao item-inativo">
+                    <span class="material-symbols-outlined icone-navegacao">person</span>
+                    <span class="texto-navegacao">Perfil</span>
+                </button>
+            </div>
+        </nav>
+    </div>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uvolte - Login</title>
+
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+  <style>
+    /* ========== CONFIGURAÇÕES GERAIS ========== */
+    :root {
+      --cor-primaria: #7c3bed;
+      --cor-primaria-hover: #5b21b6;
+      --cor-texto: #131118;
+      --cor-texto-secundario: #4b5563;
+      --cor-borda: #e5e7eb;
+      --cor-placeholder: #706189;
+      --cor-link: #22d3ee;
+      --cor-link-hover: #06b6d4;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Public Sans", sans-serif;
+      background-color: #ffffff;
+      color: var(--cor-texto);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* ========== CONTAINER PRINCIPAL ========== */
+    .pagina-login {
+      border: 1px solid #000;
+      width: 100%;
+      max-width: 400px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 12px;
+      box-shadow: 10px 20px 10px 2px #444444;
+     
+    }
+
+    /* ========== LOGO ========== */
+    .area-logo {
+      width: 160px;
+      height: 100px;
+      background-image: url("/loginUsuario/ChatGPT_Image_6_11_2025_17_53_40-removebg-preview.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      margin-bottom: 2rem;
+    
+    }
+
+    /* ========== TÍTULOS E TEXTOS ========== */
+    .titulo {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitulo {
+      color: var(--cor-texto-secundario);
+      font-size: 1rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    /* ========== FORMULÁRIO ========== */
+    .formulario-login {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      
+    }
+
+    .campo {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rotulo {
+      color: var(--cor-texto-secundario);
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .area-input {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .icone {
+      position: absolute;
+      left: 12px;
+      color: var(--cor-placeholder);
+      font-size: 22px;
+    }
+
+    .entrada {
+      width: 100%;
+      height: 52px;
+      padding: 0 44px 0 40px;
+      border: 1px solid var(--cor-borda);
+      border-radius: 10px;
+      font-size: 1rem;
+      color: var(--cor-texto);
+      transition: border 0.2s, box-shadow 0.2s;
+    }
+
+    .entrada:focus {
+      border-color: var(--cor-primaria);
+      box-shadow: 0 0 0 3px rgba(124, 59, 237, 0.2);
+      outline: none;
+    }
+
+    .entrada::placeholder {
+      color: var(--cor-placeholder);
+    }
+
+    .botao-visibilidade {
+      position: absolute;
+      right: 12px;
+      background: none;
+      border: none;
+      color: var(--cor-placeholder);
+      cursor: pointer;
+      font-size: 22px;
+    }
+
+    /* ========== LINKS ========== */
+    .link-esqueci-senha {
+      text-align: right;
+      margin-top: 0.3rem;
+    }
+
+    .link-esqueci-senha a {
+      color: var(--cor-link);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .link-esqueci-senha a:hover {
+      color: var(--cor-link-hover);
+    }
+
+    /* ========== BOTÃO ========== */
+    .botao-entrar {
+      width: 100%;
+      background-color: var(--cor-primaria);
+      color: white;
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .botao-entrar:hover {
+      background-color: var(--cor-primaria-hover);
+    }
+
+    /* ========== CADASTRO ========== */
+    .texto-cadastro {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: var(--cor-texto-secundario);
+    }
+
+    .texto-cadastro a {
+      color: var(--cor-link);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .texto-cadastro a:hover {
+      color: var(--cor-link-hover);
+    }
+
+    /* ========== RESPONSIVIDADE ========== */
+    @media (max-width: 480px) {
+      .pagina-login {
+        padding: 1.5rem;
+      }
+
+      .titulo {
+        font-size: 1.6rem;
+      }
+
+    }
+
+    .botao {
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="pagina-login">
+    <div class="area-logo"></div>
+
+    <h1 class="titulo">Bem-vindo(a)!</h1>
+    <p class="subtitulo">Faça login para continuar</p>
+
+    <form class="formulario-login">
+      <!-- Campo Email -->
+      <div class="campo">
+        <label class="rotulo" for="email">E-mail</label>
+        <div class="area-input">
+          <span class="material-symbols-outlined icone">mail</span>
+          <input id="email" class="entrada" type="email" id="email" name="email" placeholder="seuemail@dominio.com"
+            required />
+        </div>
+      </div>
+
+      <!-- Campo Senha -->
+      <div class="campo">
+        <label class="rotulo" for="senha">Senha</label>
+        <div class="area-input">
+          <span class="material-symbols-outlined icone">lock</span>
+          <input id="senha" class="entrada" type="password" id="senha" name="senha" placeholder="Sua senha" required />
+          <button type="button" class="botao-visibilidade">
+            <span class="material-symbols-outlined">visibility</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="link-esqueci-senha">
+        <a href="#">Esqueci minha senha</a>
+      </div>
+
+      <a class="Professor">
+        <button type="button" class="botao-entrar">Entrar</button>
+      </a>
+
+
+    </form>
+
+    <p class="texto-cadastro">
+      Não tem uma conta?
+      <a href="/cadastroNovoUsuario/criarConta.html">Cadastre-se</a>
+    </p>
+  </main>
+
+  <script>
+    const botaoEntrar = document.querySelector(".botao-entrar"); // seleciona pelo .classe
+
+    function Login() {
+      const emailDigitado = document.getElementById('email').value;
+      const senhaDigitada = document.getElementById('senha').value;
+
+      const emailProfessor = "professor@gmail.com";
+      const senhaProfessor = "123";
+
+      const emailAluno = "aluno@gmail.com"
+      const senhaAluno = '123' 
+
+      if (emailDigitado === emailProfessor && senhaDigitada === senhaProfessor) {
+        window.location.href = "/home/homeProfessor.html"; // redireciona
+      } else {
+       
+      }
+
+      if (emailDigitado === emailAluno && senhaDigitada === senhaAluno) {
+        window.location.href = "/home/homeAluno.html"; // redireciona
+      } else {
+        
+      }
+    }
+
+    botaoEntrar.addEventListener('click', Login);
+    
+  </script>
+</body>
+
+</html>

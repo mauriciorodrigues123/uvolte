@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Complete seu Perfil - Uvolte</title>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <style>
+        /* Reset e configurações base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            height: 100%;
+        }
+        
+        body {
+            font-family: 'Public Sans', sans-serif;
+            min-height: max(884px, 100vh);
+            background-color: #ffffff;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+        
+        /* Container principal */
+        .container-principal {
+            position: relative;
+            display: flex;
+            height: 100vh;
+            width: 100%;
+            flex-direction: column;
+            font-family: 'Public Sans', sans-serif;
+        }
+        
+        .container-conteudo {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+        
+        /* Header com gradiente */
+        .area-gradiente {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding-bottom: 3rem;
+            background: linear-gradient(to bottom, #7C3AED 0%, #7C3AED 25%, #E5E7EB 75%, #FFFFFF 100%);
+        }
+        
+        .cabecalho-perfil {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            padding: 1rem;
+            padding-bottom: 0.5rem;
+            justify-content: space-between;
+        }
+        
+        .botao-voltar {
+            display: flex;
+            width: 2.5rem;
+            height: 2.5rem;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .icone-voltar {
+            font-size: 1.5rem;
+        }
+        
+        .titulo-pagina {
+            flex: 1;
+            text-align: center;
+            font-size: 1.125rem;
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: -0.015em;
+            color: #ffffff;
+            padding-right: 2.5rem;
+        }
+        
+        /* Área do avatar */
+        .area-avatar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 2rem;
+            padding-top: 0.5rem;
+        }
+        
+        .container-avatar {
+            position: relative;
+            width: 7rem;
+            height: 7rem;
+        }
+        
+        .avatar-principal {
+            display: flex;
+            width: 7rem;
+            height: 7rem;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            border: 4px solid #ffffff;
+            background-color: #F3F4F6;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+        
+        .botao-camera {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            display: flex;
+            height: 2.25rem;
+            width: 2.25rem;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            border: 2px solid #ffffff;
+            background-color: #7C3AED;
+            color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .icone-camera {
+            font-size: 1.25rem;
+        }
+        
+        /* Formulário */
+        .container-formulario {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            padding-top: 1rem;
+            margin-top: -2.5rem;
+            background-color: #ffffff;
+            border-top-left-radius: 1.5rem;
+            border-top-right-radius: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .campo-formulario {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        .label-campo {
+            padding-bottom: 0.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.25;
+            color: #1F2937;
+        }
+        
+        .input-nome {
+            display: flex;
+            height: 3.5rem;
+            width: 100%;
+            min-width: 0;
+            flex: 1;
+            resize: none;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            border: none;
+            background-color: #F3F4F6;
+            padding: 1rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.25;
+            color: #6B7280;
+        }
+        
+        .textarea-descricao {
+            width: 100%;
+            resize: none;
+            border-radius: 0.75rem;
+            border: none;
+            background-color: #F3F4F6;
+            padding: 1rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.25;
+            color: #1F2937;
+            font-family: 'Public Sans', sans-serif;
+        }
+        
+        .textarea-descricao::placeholder {
+            color: #6B7280;
+        }
+        
+        .textarea-descricao:focus,
+        .input-nome:focus {
+            outline: none;
+            border: none;
+            box-shadow: none;
+        }
+        
+        /* Área de espaço expansível */
+        .area-expansivel {
+            flex-grow: 1;
+            background-color: #ffffff;
+        }
+        
+        /* Botão salvar */
+        .area-botao-salvar {
+            padding: 1.5rem 2rem;
+            background-color: #ffffff;
+        }
+        
+        .botao-salvar {
+            display: flex;
+            height: 3.5rem;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.75rem;
+            background-color: #7C3AED;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .botao-salvar:hover {
+            background-color: #6D28D9;
+        }
+        
+        /* Navegação inferior */
+        .navegacao-inferior {
+            display: flex;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: space-around;
+            border-top: 1px solid #E5E7EB;
+            background-color: #ffffff;
+            padding: 0.5rem;
+        }
+        
+        .item-navegacao {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem;
+            text-decoration: none;
+            color: #6B7280;
+        }
+        
+        .icone-navegacao {
+            font-size: 1.5rem;
+        }
+        
+        .texto-navegacao {
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .item-ativo {
+            color: #22D3EE;
+        }
+        
+        .item-ativo .texto-navegacao {
+            font-weight: 700;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 640px) {
+            .area-avatar {
+                padding: 0.75rem 1.5rem;
+            }
+            
+            .container-formulario {
+                padding: 0.75rem 1.5rem;
+            }
+            
+            .area-botao-salvar {
+                padding: 1rem 1.5rem;
+            }
+            
+            .titulo-pagina {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 390px) {
+            .container-avatar {
+                width: 6rem;
+                height: 6rem;
+            }
+            
+            .avatar-principal {
+                width: 6rem;
+                height: 6rem;
+            }
+            
+            .botao-camera {
+                height: 2rem;
+                width: 2rem;
+            }
+            
+            .icone-camera {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-principal">
+        <div class="container-conteudo">
+            <!-- Área com gradiente -->
+            <div class="area-gradiente">
+                <!-- Header -->
+                <header class="cabecalho-perfil">
+                    <button class="botao-voltar">
+                        <span class="material-symbols-outlined icone-voltar">arrow_back</span>
+                    </button>
+                    <h2 class="titulo-pagina">Complete seu Perfil</h2>
+                </header>
+                
+                <!-- Área do avatar -->
+                <div class="area-avatar">
+                    <div class="container-avatar">
+                        <div class="avatar-principal" data-alt="Placeholder for user profile picture." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBYHr6tmT7oJX1AY4gyNU3751yGKzpS4rADLgp3f8jrO0-m98EHbTn7ZHMjJgzC4nZG71IcdUJ4fnaLoJpLXURjAJUAfYoTQ8gMuf6cHyVc4Rt9Tu5f9J1jVr_spjczUNVNagCrH8IKH0PhXdqnjCDDhRRdTulyc6fqctuVX-Bdzjfz-mqCAwlUQa1L91SKFb7yXnVlUcTT945uA49pPuVplrG3rQG0w0RaWDJ2jCbj4OALJ1IT-jw3mYuJUCInFNcUvpaK9IvKcRg');"></div>
+                        <button class="botao-camera">
+                            <span class="material-symbols-outlined icone-camera">add_a_photo</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Formulário -->
+            <div class="container-formulario">
+                <div class="campo-formulario">
+                    <p class="label-campo">Nome Completo</p>
+                    <input class="input-nome" disabled="" value="Maria Silva"/>
+                </div>
+                
+                <div class="campo-formulario">
+                    <p class="label-campo">Descrição (máx. 100 caracteres)</p>
+                    <textarea class="textarea-descricao" maxlength="200" placeholder="Fale um pouco sobre você..." rows="4"></textarea>
+                </div>
+            </div>
+            
+            <!-- Área expansível -->
+            <div class="area-expansivel"></div>
+            
+            <!-- Botão salvar -->
+            <div class="area-botao-salvar">
+                <a class="botao-salvar" href="/home/homeProfessor.html">
+                    Salvar Perfil
+                </a>
+            </div>
+        </div> 
+        
+        <!-- Navegação inferior -->
+        <nav class="navegacao-inferior">
+            <a class="item-navegacao item-ativo" href="/home/homeProfessor.html">
+                <span class="material-symbols-outlined icone-navegacao">person</span>
+                <span class="texto-navegacao">Perfil</span>
+            </a>
+        </nav>
+    </div>
+</body>
+</html>

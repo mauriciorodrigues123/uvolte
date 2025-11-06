@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Candidatura Uvolte</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <style>
+        /* Reset e configurações base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            height: 100%;
+        }
+        
+        body {
+            font-family: 'Public Sans', sans-serif;
+            min-height: max(884px, 100vh);
+            background-color: #ffffff;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+        
+        /* Container principal */
+        .container-principal {
+            position: relative;
+            display: flex;
+            min-height: 100vh;
+            width: 100%;
+            flex-direction: column;
+            font-family: 'Public Sans', sans-serif;
+            overflow-y: auto;
+        }
+        
+        /* Header fixo */
+        .cabecalho-inscricao {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #7C3AED;
+            padding: 1rem;
+        }
+        
+        .icone-voltar {
+            display: flex;
+            width: 3rem;
+            height: 3rem;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: flex-start;
+            color: #ffffff;
+        }
+        
+        .titulo-cabecalho {
+            flex: 1;
+            text-align: center;
+            font-size: 1.125rem;
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: -0.015em;
+            color: #ffffff;
+        }
+        
+        .espaco-header {
+            width: 3rem;
+            height: 3rem;
+            flex-shrink: 0;
+        }
+        
+        /* Conteúdo principal */
+        .conteudo-principal {
+            flex: 1;
+            padding-bottom: 10rem;
+        }
+        
+        .titulo-candidatura {
+            padding: 1rem 1rem 0.25rem;
+            text-align: left;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: -0.025em;
+            color: #151118;
+        }
+        
+        .descricao-candidatura {
+            padding: 0.25rem 1rem 1rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #4B5563;
+        }
+        
+        /* Alerta de prazo */
+        .container-alerta {
+            padding: 1rem;
+        }
+        
+        .alerta-prazo {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 1rem;
+            border-radius: 0.5rem;
+            background-color: rgba(6, 182, 212, 0.1);
+            padding: 1rem;
+        }
+        
+        .icone-alerta {
+            display: flex;
+            width: 1.5rem;
+            height: 1.5rem;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: center;
+            color: #06B6D4;
+        }
+        
+        .conteudo-alerta {
+            display: flex;
+            flex-grow: 1;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: center;
+        }
+        
+        .titulo-alerta {
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: -0.015em;
+            color: #06B6D4;
+        }
+        
+        .texto-alerta {
+            font-size: 0.875rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #374151;
+        }
+        
+        /* Botões fixos inferiores */
+        .container-botoes {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            border-top: 1px solid #E5E7EB;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 1rem;
+            backdrop-filter: blur(4px);
+        }
+        
+        .wrapper-botoes {
+            margin: 0 auto;
+            display: flex;
+            width: 100%;
+            max-width: 28rem;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .botao-principal {
+            display: flex;
+            height: 3rem;
+            width: 100%;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            background-color: #7C3AED;
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.5;
+            letter-spacing: 0.015em;
+            color: #ffffff;
+            border: none;
+            transition: background-color 0.2s ease;
+        }
+        
+        .botao-principal:hover {
+            background-color: #6D28D9;
+        }
+        
+        .botao-principal:active {
+            background-color: #5B21B6;
+        }
+        
+        .botao-secundario {
+            display: flex;
+            height: 3rem;
+            width: 100%;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            background-color: transparent;
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.5;
+            letter-spacing: 0.015em;
+            color: #DC2626;
+            border: none;
+            transition: background-color 0.2s ease;
+        }
+        
+        .botao-secundario:hover {
+            background-color: rgba(220, 38, 38, 0.1);
+        }
+        
+        .botao-secundario:active {
+            background-color: rgba(220, 38, 38, 0.2);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 640px) {
+            .titulo-candidatura {
+                font-size: 1.75rem;
+                padding: 0.75rem;
+            }
+            
+            .descricao-candidatura {
+                padding: 0.25rem 0.75rem 0.75rem;
+                font-size: 0.875rem;
+            }
+            
+            .container-alerta {
+                padding: 0.75rem;
+            }
+            
+            .container-botoes {
+                padding: 0.75rem;
+            }
+            
+            .botao-principal,
+            .botao-secundario {
+                height: 2.75rem;
+                font-size: 0.875rem;
+            }
+        }
+        
+        @media (max-width: 390px) {
+            .titulo-candidatura {
+                font-size: 1.5rem;
+            }
+            
+            .titulo-cabecalho {
+                font-size: 1rem;
+            }
+            
+            .titulo-alerta {
+                font-size: 0.875rem;
+            }
+            
+            .texto-alerta {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-principal">
+        <main class="conteudo-principal">
+            <!-- Header fixo -->
+            <header class="cabecalho-inscricao">
+                <div class="icone-voltar">
+                    <span class="material-symbols-outlined text-2xl">arrow_back</span>
+                </div>
+                <h2 class="titulo-cabecalho">Candidatura</h2>
+                <div class="espaco-header"></div>
+            </header>
+            
+            <!-- Título e descrição -->
+            <h1 class="titulo-candidatura">Representante de Sala - Turma 301</h1>
+            <p class="descricao-candidatura">
+                Inscreva-se para representar sua turma. As responsabilidades incluem mediar a comunicação com os professores e organizar eventos da turma.
+            </p>
+            
+            <!-- Alerta de prazo -->
+            <div class="container-alerta">
+                <div class="alerta-prazo">
+                    <div class="icone-alerta">
+                        <span class="material-symbols-outlined text-2xl">history</span>
+                    </div>
+                    <div class="conteudo-alerta">
+                        <p class="titulo-alerta">Inscrições terminam em 1 dia</p>
+                        <p class="texto-alerta">Não perca o prazo final para se candidatar.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Botões fixos inferiores -->
+        <div class="container-botoes">
+            <div class="wrapper-botoes">
+                <a href="/candidatar/candidatar.html" class="botao-principal">
+                    <span>Candidatar-me</span>
+                </a>
+                <a href="/candidatar/naoCandidatar.html" class="botao-secundario">
+                    <span>Não Candidatar-me</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
