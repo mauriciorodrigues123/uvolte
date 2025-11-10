@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Detalhes da Eleição - Uvolte</title>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <style>
+        /* Reset e configurações base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Public Sans', sans-serif;
+            background-color: #f7f6f8;
+            color: #1F2937;
+            min-height: 100vh;
+            line-height: 1.5;
+        }
+        
+        /* Container principal */
+        .container-principal {
+            position: relative;
+            display: flex;
+            min-height: 100vh;
+            width: 100%;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        
+        /* Cabeçalho */
+        .cabecalho {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            height: 3.5rem;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            background-color: #7c3bed;
+            padding: 0 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .botao-voltar {
+            display: flex;
+            width: 2.5rem;
+            height: 2.5rem;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            color: white;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+        
+        .botao-voltar span {
+            font-size: 1.5rem;
+        }
+        
+        .titulo-pagina {
+            flex: 1;
+            text-align: center;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .espaco-cabecalho {
+            width: 2.5rem;
+            flex-shrink: 0;
+        }
+        
+        /* Conteúdo principal */
+        .conteudo-principal {
+            flex: 1;
+            padding-bottom: 6rem;
+        }
+        
+        .container-eleicao {
+            padding: 1rem;
+        }
+        
+        /* Card de informações da eleição */
+        .card-info-eleicao {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+            border-radius: 0.75rem;
+            background-color: white;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+        
+        .conteudo-info {
+            display: flex;
+            width: 100%;
+            min-width: 18rem;
+            flex-grow: 1;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem;
+        }
+        
+        .titulo-eleicao {
+            font-size: 1.125rem;
+            font-weight: 700;
+            line-height: 1.25;
+            color: #111827;
+        }
+        
+        .detalhes-eleicao {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        
+        @media (min-width: 640px) {
+            .detalhes-eleicao {
+                flex-direction: row;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .rotulo-info {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #4B5563;
+        }
+        
+        .status-finalizada {
+            display: inline-flex;
+            align-items: center;
+            border-radius: 9999px;
+            background-color: #FEE2E2;
+            padding: 0.25rem 0.625rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #991B1B;
+        }
+        
+        .periodo-eleicao {
+            font-size: 0.875rem;
+            color: #6B7280;
+        }
+        
+        /* Card do vencedor */
+        .card-vencedor {
+            padding: 1rem;
+            padding-bottom: 1.5rem;
+        }
+        
+        .container-vencedor {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            border-radius: 0.75rem;
+            background: linear-gradient(to bottom right, #7c3bed, #8b5cf6);
+            padding: 1.5rem;
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .foto-vencedor {
+            position: relative;
+            display: flex;
+            width: 7rem;
+            height: 7rem;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            background-color: white;
+            padding: 0.25rem;
+        }
+        
+        .imagem-candidato {
+            width: 100%;
+            height: 100%;
+            border-radius: 9999px;
+            object-fit: cover;
+        }
+        
+        .icone-medalha {
+            position: absolute;
+            bottom: -0.25rem;
+            right: -0.25rem;
+            border-radius: 9999px;
+            background-color: #FBBF24;
+            padding: 0.25rem;
+            font-size: 2.25rem;
+            color: #92400E;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .info-vencedor {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            text-align: center;
+        }
+        
+        .nome-vencedor {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 2rem;
+        }
+        
+        .tag-vencedor {
+            display: inline-flex;
+            align-items: center;
+            border-radius: 9999px;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: white;
+            backdrop-filter: blur(4px);
+        }
+        
+        .percentual-vencedor {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: #FDE68A;
+            text-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            line-height: 2.5rem;
+        }
+        
+        .texto-votos {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* Seção de resultados */
+        .secao-resultados {
+            padding: 1rem;
+        }
+        
+        .titulo-resultados {
+            font-size: 1.125rem;
+            font-weight: 700;
+            line-height: 1.25;
+            color: #111827;
+            padding-bottom: 0.5rem;
+            padding-top: 0.5rem;
+        }
+        
+        .card-resultados {
+            border-radius: 0.75rem;
+            background-color: white;
+            padding: 1rem;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Gráfico de barras */
+        .grafico-barras {
+            display: flex;
+            align-items: flex-end;
+            gap: 0.75rem;
+            border-radius: 0.5rem;
+            background-color: #F9FAFB;
+            padding: 1rem;
+        }
+        
+        .barra-item {
+            display: flex;
+            height: 6rem;
+            width: 33.333333%;
+            flex-direction: column-reverse;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .barra {
+            width: 100%;
+            border-top-left-radius: 0.25rem;
+            border-top-right-radius: 0.25rem;
+        }
+        
+        .barra-candidato {
+            background-color: #06B6D4;
+        }
+        
+        .barra-vencedor {
+            background-color: #7c3bed;
+        }
+        
+        .nome-candidato-grafico {
+            font-size: 0.75rem;
+            color: #6B7280;
+        }
+        
+        .nome-candidato-grafico.vencedor {
+            font-weight: 700;
+            color: #7c3bed;
+        }
+        
+        /* Lista de candidatos */
+        .lista-candidatos {
+            padding-top: 0.5rem;
+        }
+        
+        .espaco-candidatos {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .card-candidato {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-radius: 0.5rem;
+            background-color: #F9FAFB;
+            padding: 0.75rem;
+        }
+        
+        .foto-candidato-lista {
+            height: 2.5rem;
+            width: 2.5rem;
+            flex-shrink: 0;
+            border-radius: 9999px;
+            object-fit: cover;
+        }
+        
+        .info-candidato {
+            flex: 1;
+        }
+        
+        .nome-candidato {
+            font-weight: 500;
+            color: #1F2937;
+        }
+        
+        .percentual-candidato {
+            font-size: 0.875rem;
+            color: #6B7280;
+        }
+        
+        /* Navegação inferior */
+        .navegacao-inferior {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 10;
+            width: 100%;
+            border-top: 1px solid #E5E7EB;
+            background-color: white;
+        }
+        
+        .container-navegacao {
+            margin: 0 auto;
+            display: flex;
+            height: 4rem;
+            max-width: 28rem;
+            align-items: center;
+            justify-content: space-around;
+        }
+        
+        .link-navegacao {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            text-decoration: none;
+            color: #6B7280;
+            transition: color 0.2s;
+        }
+        
+        .link-navegacao:hover {
+            color: #7c3bed;
+        }
+        
+        .link-navegacao.ativo {
+            color: #7c3bed;
+        }
+        
+        .texto-navegacao {
+            font-size: 0.75rem;
+        }
+        
+        .texto-navegacao.ativo {
+            font-weight: 700;
+        }
+        
+        /* Ícones do Material Symbols */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 1.5rem;
+        }
+        
+        /* Responsividade */
+        @media (min-width: 1280px) {
+            .card-info-eleicao {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+            
+            .conteudo-info {
+                padding: 1rem 1.5rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .container-botoes {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .botao {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-principal">
+        <!-- Cabeçalho -->
+        <header class="cabecalho">
+            <a href="/home/homeProfessor.htmlz'" class="botao-voltar" type="button">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </a>
+            <h1 class="titulo-pagina">Detalhes da Eleição</h1>
+            <div class="espaco-cabecalho"></div>
+        </header>
+        
+        <!-- Conteúdo Principal -->
+        <main class="conteudo-principal">
+            <!-- Card de Informações da Eleição -->
+            <div class="container-eleicao">
+                <div class="card-info-eleicao">
+                    <div class="conteudo-info">
+                        <h2 class="titulo-eleicao">Eleição Representante Turma 301 - 2024</h2>
+                        <div class="detalhes-eleicao">
+                            <div class="info-item">
+                                <span class="rotulo-info">Status:</span>
+                                <span class="status-finalizada">Finalizada</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="rotulo-info">Período:</span>
+                                <span class="periodo-eleicao">10/10/2024 a 15/10/2024</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card do Vencedor -->
+            <div class="card-vencedor">
+                <div class="container-vencedor">
+                    <div class="foto-vencedor">
+                        <img class="imagem-candidato" alt="Foto de Ana Silva" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvuLn3XqDoyfCFREtTl4Imb_uNBT9w8IjVoNaWiqJtojCp2rG1B68XXzYNfk7J_ZhMlo5la2xP9I94Cf1LodC4i4RkQQ79X37chMgC12PDkaFD7wqPxUrhu7eQfyYE7p5AXnccNbQSxPpNGGcaCaXJ449XxkJFNCcwH68WtuLX3tMk0SthWngVPdbs-CaTyRUB94AqS24K7wZslmbsxecHmU5ewMCdU_TaK7BE4zPEvaBdjPJirsbrWYWZQu_Bkz95NAkaeYOknaU"/>
+                        <span class="material-symbols-outlined icone-medalha">military_tech</span>
+                    </div>
+                    <div class="info-vencedor">
+                        <p class="nome-vencedor">Ana Silva</p>
+                        <span class="tag-vencedor">Vencedora</span>
+                        <p class="percentual-vencedor">60%</p>
+                        <p class="texto-votos">dos votos</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Seção de Resultados -->
+            <div class="secao-resultados">
+                <h3 class="titulo-resultados">Resultados da Apuração</h3>
+                <div class="card-resultados">
+                    <!-- Gráfico de Barras -->
+                    <div class="grafico-barras">
+                        <div class="barra-item">
+                            <span class="nome-candidato-grafico">Bruno</span>
+                            <div class="barra barra-candidato" style="height: 30%"></div>
+                        </div>
+                        <div class="barra-item">
+                            <span class="nome-candidato-grafico vencedor">Ana</span>
+                            <div class="barra barra-vencedor" style="height: 60%"></div>
+                        </div>
+                        <div class="barra-item">
+                            <span class="nome-candidato-grafico">Carlos</span>
+                            <div class="barra barra-candidato" style="height: 10%"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Lista de Candidatos -->
+                    <div class="lista-resultados">
+                        <div class="espaco-candidatos">
+                            <div class="card-candidato">
+                                <img class="foto-candidato-lista" alt="Foto de Bruno Costa" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0MUjihmSq0bcxUWfoclOgjCOmynhmfQQerW_pr2sRqrDSLuPbgxQgieWnYjAKXy7gvNahvUzYoYqb9k_w3ZfY8TmUFeISembOZKWx3ePedxAj6l2QI0dMZ-u7a00XtO7uLo7EtpoW4BoGNFnB9JPie2ey2BoT9vvhPc_GHGyivsdqCsU-vc_a9JK9MRc1aCxVDfoAvcbtFFS6r5A1w30tyfJv_wCTZP8t4rIXt9CXFJESHBsRwpNUwz808EGQ6qWL7QnHek4EwUk"/>
+                                <div class="info-candidato">
+                                    <p class="nome-candidato">Bruno Costa</p>
+                                    <p class="percentual-candidato">30% dos votos</p>
+                                </div>
+                            </div>
+                            <div class="card-candidato">
+                                <img class="foto-candidato-lista" alt="Foto de Carlos Pereira" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABPFuDig0-sO-nw39tDFBIbZjxk3kUX1wqJTJ-E7bdR2Ew9LCVPuzOqjAlcbqGo8inrTnEJSKhsde-gYUEOGj4VFjDKej9-VqPwxFLRll287LCrmzFJBN8mhdkXuJiBXJ3peYhV0YK3gR9QpCbVWTjrAWpIP_89PRVRdIVTaKDEHBw_xe_2xXhL8AzKXfPN1-Iy2wLyOWspbrNxDAQiQC0oecYFwgUMeAvubEL0UFBYtQnlpJRdlzQv5s2-lgY1Qg9bxUGbFqlWlA"/>
+                                <div class="info-candidato">
+                                    <p class="nome-candidato">Carlos Pereira</p>
+                                    <p class="percentual-candidato">10% dos votos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Navegação Inferior -->
+        <nav class="navegacao-inferior">
+            <div class="container-navegacao">
+                <a class="link-navegacao" href="/home/homeProfessor.html">
+                    <span class="material-symbols-outlined">home</span>
+                    <span class="texto-navegacao">Início</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+</body>
+</html>

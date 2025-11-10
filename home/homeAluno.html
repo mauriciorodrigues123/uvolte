@@ -352,11 +352,14 @@
 
         .icone-navegacao {
             font-size: 2rem;
+ 
         }
 
         .texto-navegacao {
             font-size: 0.75rem;
             font-weight: 700;
+            text-align: none;
+            color: #7C3AED;
         }
 
         .item-ativo .icone-navegacao,
@@ -371,6 +374,19 @@
         .item-inativo .texto-navegacao {
             color: #6B7280;
             font-weight: 500;
+        }
+
+        .botao-navegacao{
+            text-decoration: none;
+           
+        }
+
+        #iconi{
+            color: #7C3AED;
+        }
+
+        #texto{
+            color: #7C3AED;
         }
 
         /* Responsividade */
@@ -422,7 +438,7 @@
                         style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB0p8G5IoSaTDBpHm9G-p1QXPxU9QO_hRvDRGYEwnvT5N48A8evb5jdYNpkQ0XmTfXZKgiH10Ed9GiPb8xslasu-UAFIWqFil7zlOYPRFwtEkEj9VMqWy9kcHYxSMSO4tjxvaCVUP1zXr5YxdcveF-NEnPRa2EeSlyVHyaxAVTbLun4aEkzXjQBrW_Kx-wPlT2UaY8etLgOomTZvHGMwpW0pXIVckR1eRaGkR9yQe9w3OjLEsyQKYcZFxnLUGHH5-um5hOAYLk_4HY");'>
                     </div>
                 </div>
-                <h2 class="boas-vindas">Olá, Carlos!</h2>
+                <h2 class="boas-vindas">Olá, Aluno(a)</h2>
             </div>
             <div class="container-notificacao">
                 <button class="botao-notificacao">
@@ -483,13 +499,13 @@
                 <!-- Card Resultado 1 -->
                 <div class="card-resultado">
                     <div class="icone-resultado">
-                        <span class="material-symbols-outlined">pie_chart</span>
+                        <span class="material-symbols-outlined">how_to_vote</span>
                     </div>
                     <div class="conteudo-resultado">
                         <p class="titulo-resultado">Presidente Grêmio Estudantil 2024</p>
                         <p class="subtitulo-resultado">Eleito(a): Maria Silva</p>
                     </div>
-                    <button class="botao-detalhes">Ver detalhes</button>
+                    <a href="/detalhesEleicao/detalhes(A).html" class="botao-detalhes">Ver detalhes</a>
                 </div>
 
                 <!-- Card Resultado 2 -->
@@ -501,7 +517,7 @@
                         <p class="titulo-resultado">Representante de Turma - 201</p>
                         <p class="subtitulo-resultado">Eleito(a): João Pereira</p>
                     </div>
-                    <button class="botao-detalhes">Ver detalhes</button>
+                    <a href="/detalhesEleicao/detalhes(A).html" class="botao-detalhes">Ver detalhes</a>
                 </div>
             </div>
         </main>
@@ -512,10 +528,10 @@
                 <button class="item-navegacao item-ativo">
                     <span class="material-symbols-outlined icone-navegacao">home</span>
                     <span class="texto-navegacao">Início</span>
-                    <a href="/criacaoPerfil/criarPerfil(A).html">
+                    <a class="botao-navegacao" href="/criacaoPerfil/criarPerfil(A).html">
                         <button class="item-navegacao item-inativo">
-                            <span class="material-symbols-outlined icone-navegacao">person</span>
-                            <span class="texto-navegacao">Perfil</span>
+                            <span id="iconi" class="material-symbols-outlined icone-navegacao">person</span>
+                            <span id="texto" class="texto-navegacao">Perfil</span>
                         </button>
                     </a>
 

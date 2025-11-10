@@ -164,8 +164,17 @@
             padding-top: 1rem;
         }
 
+        .botoes{
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            
+        }
+
         .botao-submit {
             display: flex;
+            justify-content: center;
             width: 100%;
             align-items: center;
             justify-content: center;
@@ -179,6 +188,26 @@
             cursor: pointer;
             transition: all 0.2s ease;
             outline: none;
+            text-decoration: none;
+        }
+
+        .botao-submit2 {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.5rem;
+            background-color: #06B6D4;
+            height: 3.5rem;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            outline: none;
+            text-decoration: none;
         }
 
         .botao-submit:hover {
@@ -324,10 +353,16 @@
                 </div>
 
                 <!-- Botão de submit -->
-
-                <a class="botao-submit" href="/tipoUsuario/tipoUsuario.html">
-                        Criar Conta
+                 <div class="botoes">
+                    <a class="botao-submit" href="/criacaoPerfil/criarPerfil(A).html">
+                        Criar como Aluno
                 </a>
+
+                <a class="botao-submit2" href="/criacaoPerfil/criarPerfil(P).html">
+                        Criar como Professor
+                </a>
+                 </div>
+                
 
             </form>
 

@@ -72,6 +72,7 @@
             background: none;
             border: none;
             cursor: pointer;
+            text-decoration: none;
         }
         
         .icone-voltar {
@@ -242,6 +243,7 @@
             border: none;
             cursor: pointer;
             transition: background-color 0.2s ease;
+            text-decoration: none;
         }
         
         .botao-salvar:hover {
@@ -334,9 +336,9 @@
             <div class="area-gradiente">
                 <!-- Header -->
                 <header class="cabecalho-perfil">
-                    <button class="botao-voltar">
-                        <span class="material-symbols-outlined icone-voltar">arrow_back</span>
-                    </button>
+                    <a href="/cadastroNovoUsuario/criarConta.html" class="botao-voltar">
+                            <span class="material-symbols-outlined icone-voltar">arrow_back</span>
+                    </a>
                     <h2 class="titulo-pagina">Complete seu Perfil</h2>
                 </header>
                 
@@ -370,7 +372,7 @@
             <!-- Botão salvar -->
             <div class="area-botao-salvar">
                 <a class="botao-salvar" href="/home/homeProfessor.html">
-                    Salvar Perfil
+                    Salvar Perfil 
                 </a>
             </div>
         </div> 
