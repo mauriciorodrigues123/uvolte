@@ -53,6 +53,7 @@
             flex-shrink: 0;
             align-items: center;
             justify-content: center;
+            text-decoration: none;
         }
         
         .icone-voltar span {
@@ -219,6 +220,7 @@
             box-shadow: 0 10px 15px -3px rgba(124, 59, 237, 0.3);
             transition: background-color 0.2s;
             border: none;
+            text-decoration: none;
         }
         
         .botao-criar:hover {
@@ -278,6 +280,8 @@
             font-size: 0.75rem;
             font-weight: 500;
         }
+
+
         
         /* Ícones do Material Symbols */
         .material-symbols-outlined {
@@ -302,9 +306,9 @@
         <main class="conteudo-principal">
             <!-- Cabeçalho -->
             <div class="cabecalho">
-                <div class="icone-voltar">
+                <a href="/home/homeProfessor.html" class="icone-voltar">
                     <span class="material-symbols-outlined">arrow_back</span>
-                </div>
+                </a>
                 <h1 class="titulo-pagina">Criar Nova Sala de Eleição</h1>
                 <div class="espaco-vazio"></div>
             </div>
@@ -328,41 +332,26 @@
                     <div class="grupo-data">
                         <p class="rotulo-data">Início da Votação</p>
                         <input class="campo-data" id="data-inicio" placeholder="Selecione a data" type="date"/>
-                        <span class="material-symbols-outlined icone-calendario">calendar_today</span>
+                        
                     </div>
                     <div class="grupo-data">
                         <p class="rotulo-data">Fim da Votação</p>
                         <input class="campo-data" id="data-fim" placeholder="Selecione a data" type="date"/>
-                        <span class="material-symbols-outlined icone-calendario">calendar_today</span>
+                    
                     </div>
                 </div>
                 
                 <!-- Botão Criar Sala -->
                 <div class="container-botao">
                     <a href="/home/homeProfessor.html" class="botao-criar" type="button">
-                        <span>Criar Sala</span>
+                        <span class="criarSala">Criar Sala</span>
                     </a>
                 </div>
             </div>
         </main>
         
         <!-- Navegação Inferior -->
-        <nav class="navegacao-inferior">
-            <div class="navegacao-container">
-                <a class="link-navegacao" href="#">
-                    <span class="material-symbols-outlined">home</span>
-                    <span class="texto-navegacao">Home</span>
-                </a>
-                <a class="link-navegacao ativo" href="#">
-                    <span class="material-symbols-outlined">how_to_vote</span>
-                    <span class="texto-navegacao">Salas</span>
-                </a>
-                <a class="link-navegacao" href="#">
-                    <span class="material-symbols-outlined">person</span>
-                    <span class="texto-navegacao">Perfil</span>
-                </a>
-            </div>
-        </nav>
+
     </div>
 </body>
 </html>

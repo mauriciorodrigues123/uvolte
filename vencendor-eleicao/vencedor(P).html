@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultado da Eleição - Uvolte</title>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Public Sans', sans-serif;
+    }
+
+    body {
+      background-color: #f7f6f8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      color: #222;
+    }
+
+    header {
+      background-color: #7c3bed;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem 1rem;
+      overflow-y: auto;
+    }
+
+    .cartao-candidato {
+      background-color: rgba(124, 59, 237, 0.1);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .imagem-candidato {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      margin-bottom: 1rem;
+    }
+
+    .cargo {
+      color: #555;
+      font-size: 0.9rem;
+    }
+
+    .nome {
+      color: #7c3bed;
+      font-size: 1.6rem;
+      font-weight: bold;
+      margin-top: 0.3rem;
+    }
+
+    .info-contato {
+      margin-top: 3rem;
+      text-align: left;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      gap: 3rem;
+    }
+
+    .linha-contato {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.7rem 0;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 0.5rem;
+      padding: 10px;
+    }
+
+    .icone {
+      color: #7c3bed;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+    }
+
+    .texto-contato {
+      color: #333;
+      font-size: 0.95rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      
+    }
+
+    .metricas {
+      text-align: center;
+    }
+
+    .metricas h2 {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .grade-metricas {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .caixa-metrica {
+      background-color: #f0f0f0;
+      border-radius: 1rem;
+      padding: 1rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    .rotulo-metrica {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .valor-metrica {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #7c3bed;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 70px;
+      background-color: #fff;
+      border-top: 1px solid #ddd;
+    }
+
+    .botao-rodape {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #777;
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.3s;
+    }
+
+    .botao-rodape.ativo {
+      color: #7c3bed;
+    }
+
+    .botao-rodape:hover {
+      color: #7c3bed;
+    }
+
+    .botao-rodape span {
+      font-size: 1.6rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Painel de Resultados</header>
+
+  <main>
+    <section class="cartao-candidato">
+      <img class="imagem-candidato" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4szbDVTd70m24-24Gse1tqRZefmt1DIzmtDhN5_3FIpDRFMtcGo-fU41SANHHQ_9rAOUfxhJAmz8D3V9DUY_hRhBuB4cPw0S2iHwwmvpLo6dgGriVtKT_ztwlCKRzKM492clyOepmO7UINs4oXCx5ST4Nk5jvhdnjzY_06glA-8N_hLckBEaYyy0Uoi0ej2kOixS1RmbfXANPDOLBS7x7dAlqUV8B3a1JwOIaot58AA-kbcV_ogZT1hq8SHy9UAHymQTXkNmJwno" alt="Candidata eleita">
+
+      <p class="cargo">Representante Eleito</p>
+      <p class="nome">Ana Clara Monteiro</p>
+
+      <div class="info-contato">
+        <div class="linha-contato">
+          <span class="material-symbols-outlined icone">mail</span>
+          <p class="texto-contato">ana.monteiro@instituicao.edu.br</p>
+        </div>
+        <div class="linha-contato">
+          <span class="material-symbols-outlined icone">phone</span>
+          <p class="texto-contato">(11) 98765-4321</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="metricas">
+      <h2>Métricas da Eleição</h2>
+      <div class="grade-metricas">
+        <div class="caixa-metrica">
+          <p class="rotulo-metrica">Total de Votos</p>
+          <p class="valor-metrica">850</p>
+        </div>
+        <div class="caixa-metrica">
+          <p class="rotulo-metrica">Votos do Vencedor</p>
+          <p class="valor-metrica">62.5%</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a href="/home/homeProfessor.html" class="botao-rodape">
+      <span class="material-symbols-outlined">home</span>
+      <p>Início</p>
+    </a>
+  </footer>
+
+</body>
+</html>

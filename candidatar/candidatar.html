@@ -57,7 +57,7 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
 
-    
+
 
         .titulo-votacao {
             font-size: 1.25rem;
@@ -192,9 +192,10 @@
 
         .menu-navegacao {
             display: flex;
-            height: 4rem;
-            align-items: center;
-            justify-content: space-around;
+            justify-content: center;
+            text-align: center;
+            text-decoration: none;
+            
         }
 
         .item-menu {
@@ -222,10 +223,48 @@
         .texto-menu {
             font-size: 0.75rem;
             font-weight: 500;
+
         }
 
         .texto-menu.ativo {
             font-weight: 700;
+        }
+
+        #cancelar-cand{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            text-decoration: none;
+            padding: 10px;
+            background-color: #DC2626;
+            color: white;
+            height: 50px;
+            font-weight: 700;
+        }
+
+        #cancelar-cand:hover{
+            background-color: #bd1a1a;
+        }
+
+        .item-navegacao {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            text-decoration: none;
+            font-weight: 700;
+            
+        }
+
+        #home{
+            font-weight: 400;
+            font-size: 30px;
         }
 
         /* Responsividade */
@@ -358,15 +397,24 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Botão de ação -->
+                <div class="container-botao-acao">
+                    <div class="wrapper-botao">
+                        <a id="cancelar-cand" href="/home/homeAluno.html" class="botao-acao">
+                            Cancelar candidatura
+                        </a>
+                    </div>
+                </div>
             </div>
         </main>
 
         <!-- Navegação inferior -->
         <nav class="navegacao-inferior">
             <div class="menu-navegacao">
-                <a class="item-navegacao" href="/loginUsuario/index.html">
-                    <span class="material-symbols-outlined">home</span>
-                    <p class="texto-navegacao">Início</p>
+                <a class="item-navegacao" href="/home/homeAluno.html">
+                    <span id="home" class="material-symbols-outlined icone-navegacao">home</span>
+                    <span class="texto-navegacao">Início</span>
                 </a>
             </div>
         </nav>

@@ -59,6 +59,7 @@
             border: none;
             background: none;
             cursor: pointer;
+            text-decoration: none;
         }
         
         .botao-voltar span {
@@ -376,6 +377,7 @@
             max-width: 28rem;
             align-items: center;
             justify-content: space-around;
+            
         }
         
         .link-navegacao {
@@ -385,8 +387,9 @@
             justify-content: center;
             gap: 0.25rem;
             text-decoration: none;
-            color: #6B7280;
+            color: #8b5cf6;
             transition: color 0.2s;
+            
         }
         
         .link-navegacao:hover {
@@ -403,6 +406,15 @@
         
         .texto-navegacao.ativo {
             font-weight: 700;
+        }
+
+        #home{
+            font-weight: 600;
+            font-size: larger;
+        }
+
+        #home-casa{
+            font-size: 30px;
         }
         
         /* Ícones do Material Symbols */
@@ -440,9 +452,9 @@
     <div class="container-principal">
         <!-- Cabeçalho -->
         <header class="cabecalho">
-            <button class="botao-voltar" type="button">
+            <a href="/home/homeAluno.html" class="botao-voltar" type="button">
                 <span class="material-symbols-outlined">arrow_back</span>
-            </button>
+            </a>
             <h1 class="titulo-pagina">Detalhes da Eleição</h1>
             <div class="espaco-cabecalho"></div>
         </header>
@@ -531,8 +543,8 @@
         <nav class="navegacao-inferior">
             <div class="container-navegacao">
                 <a class="link-navegacao" href="/home/homeAluno.html">
-                    <span class="material-symbols-outlined">home</span>
-                    <span class="texto-navegacao">Início</span>
+                    <span id="home-casa" class="material-symbols-outlined">home</span>
+                    <span id="home" class="texto-navegacao">Início</span>
                 </a>
             </div>
         </nav>

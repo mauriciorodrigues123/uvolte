@@ -243,6 +243,27 @@
         .texto-menu.ativo {
             font-weight: 700;
         }
+
+        .item-navegacao {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            text-decoration: none;
+            font-weight: 700;
+            
+            
+        }
+
+        #home{
+            font-weight: 400;
+            font-size: 30px;
+        }
         
         /* Responsividade */
         @media (max-width: 640px) {
@@ -282,6 +303,8 @@
                 padding-bottom: 0.875rem;
             }
         }
+
+        
         
         @media (max-width: 390px) {
             .intro-votacao {
@@ -377,7 +400,7 @@
         <div class="container-botao-acao">
             <div class="wrapper-botao">
                 <a href="/confimacaoVoto/confirmacaoVoto.html" class="botao-acao">
-                    confirmar voto  
+                    Confirmar voto  
                 </a>
             </div>
         </div>
@@ -385,9 +408,9 @@
         <!-- Navegação inferior -->
         <nav class="navegacao-inferior">
             <div class="menu-navegacao">
-                <a class="item-navegacao" href="/loginUsuario/index.html">
-                    <span class="material-symbols-outlined">home</span>
-                    <p class="texto-navegacao">Início</p>
+                <a class="item-navegacao" href="/home/homeAluno.html">
+                    <span id="home" class="material-symbols-outlined icone-navegacao">home</span>
+                    <span class="texto-navegacao">Início</span>
                 </a>
             </div>
         </nav>

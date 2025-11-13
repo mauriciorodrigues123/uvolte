@@ -191,6 +191,7 @@
             color: #ffffff;
             border: none;
             transition: background-color 0.2s ease;
+            text-decoration: none;
         }
         
         .botao-principal:hover {
@@ -217,18 +218,23 @@
             font-weight: 700;
             line-height: 1.5;
             letter-spacing: 0.015em;
-            color: #DC2626;
+            color: #fff;
+            background: #DC2626;
             border: none;
             transition: background-color 0.2s ease;
+            text-decoration: none;
+        }
+
+        .botao-secundario:hover{
+            background-color: #bd1a1a;
+        }
+
+        .seta{
+            text-decoration: none;
+            color: #fff;
         }
         
-        .botao-secundario:hover {
-            background-color: rgba(220, 38, 38, 0.1);
-        }
         
-        .botao-secundario:active {
-            background-color: rgba(220, 38, 38, 0.2);
-        }
         
         /* Responsividade */
         @media (max-width: 640px) {
@@ -282,7 +288,10 @@
             <!-- Header fixo -->
             <header class="cabecalho-inscricao">
                 <div class="icone-voltar">
-                    <span class="material-symbols-outlined text-2xl">arrow_back</span>
+                    <a class="seta" href="/home/homeAluno.html">
+                        <span class="material-symbols-outlined text-2xl">arrow_back</span>
+                    </a>
+                    
                 </div>
                 <h2 class="titulo-cabecalho">Candidatura</h2>
                 <div class="espaco-header"></div>
